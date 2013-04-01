@@ -16,11 +16,14 @@ backup=('opt/rigsofrods/plugins.cfg')
 source=('plugins.cfg'
         'RoR.desktop'
         'rorconfig.desktop'
-        'RoR.png')
+        'RoR.png'
+        "content-pack-0.37.zip::http://sourceforge.net/projects/rigsofrods/files/rigsofrods/0.37/content-pack-0.37.zip/download"
+        )
 md5sums=('4a17e366ecfdb6f43ab448a45863a760'
          'f26d4c5e8ecbb799095452c5d9034625'
          'b4763676cfc156c854aeaa3481772291'
-         'b1b8a67e7402f1fbbcf14dbf03303415')
+         'b1b8a67e7402f1fbbcf14dbf03303415'
+         '261eb00d93559421f568b578bb95b697')
 
 _hgroot="http://hg.code.sf.net/p/rigsofrods"
 _hgrepo="codehg"
@@ -74,6 +77,7 @@ package() {
  install -Dm 644 "$srcdir/RoR.png" "$pkgdir/usr/share/pixmaps/RoR.png"
  install -Dm 644 "$srcdir/RoR.desktop" "$pkgdir/usr/share/applications/RoR.desktop"
  install -Dm 644 "$srcdir/rorconfig.desktop" "$pkgdir/usr/share/applications/rorconfig.desktop"
+ install -Dm 644 "$srcdir/content-pack-0.37.zip" "$pkgdir/opt/rigsofrods/misc/content-pack-0.37.zip"
 
  mkdir -p "$pkgdir/usr/bin"
  ln -s "$pkgdir/opt/rigsofrods/RoRConfig" "$pkgdir/usr/bin/RoRConfig"
