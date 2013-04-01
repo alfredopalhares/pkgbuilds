@@ -56,15 +56,15 @@ build() {
   -DROR_USE_SOCKETW=TRUE \
   -DROR_USE_PAGED=TRUE \
   -DROR_USE_CAELUM=TRUE \
-  -DROR_USE_ANGELSCRIPT=FALSE \
-  -DANGELSCRIPT_INCLUDE_DIRS=""\
+  -DROR_USE_ANGELSCRIPT=TRUE \
+  -DANGELSCRIPT_INCLUDE_DIRS=/usr/lib/libangelscript.so\
   -DROR_USE_CURL=TRUE \
   -DwxWidgets_wxrc_EXECUTABLE=/usr/bin/wxrc-2.9 \
   -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-2.9 \
   -DSOCKETW_INCLUDE_DIRS=/usr/include \
   -DSOCKETW_LIBRARIES=/usr/lib/libSocketW.so \
   -DCMAKE_PREFIX_PATH=/opt/rigsofrods
- #sed -i "s/.getValue/.toValue/" "$srcdir/$_hgrepo-build/source/main/gui"/*.cpp
+
  make
 }
 
