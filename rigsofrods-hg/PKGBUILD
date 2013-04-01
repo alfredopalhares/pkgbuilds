@@ -69,12 +69,16 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_hgrepo-build"
-  mkdir -p $pkgdir/opt/rigsofrods
+ cd "$srcdir/$_hgrepo-build"
+ mkdir -p $pkgdir/opt/rigsofrods
  cp -dpr --no-preserve=ownership bin "$pkgdir/opt/rigsofrods"
 
  install -Dm 644 "$srcdir/plugins.cfg" "$pkgdir/opt/rigsofrods/bin/plugins.cfg"
  install -Dm 644 "$srcdir/RoR.png" "$pkgdir/usr/share/pixmaps/RoR.png"
  install -Dm 644 "$srcdir/RoR.desktop" "$pkgdir/usr/share/applications/RoR.desktop"
  install -Dm 644 "$srcdir/rorconfig.desktop" "$pkgdir/usr/share/applications/rorconfig.desktop"
+
+ mkdir -p "$pkgdir/usr/bin"
+ ln -s "$pkgdir/opt/rigsofrods/RoRConfig" "$pkgdir/usr/bin/RoRConfig"
+ ln -s "$pkgdir/opt/rigsofrods/RoR" "$pkgdir/usr/bin/RoR"
 }
