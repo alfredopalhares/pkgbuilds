@@ -65,7 +65,7 @@ build() {
   -DSOCKETW_LIBRARIES=/usr/lib/libSocketW.so \
   -DCMAKE_PREFIX_PATH=/opt/rigsofrods
  #sed -i "s/.getValue/.toValue/" "$srcdir/$_hgrepo-build/source/main/gui"/*.cpp
- make -j3
+ make
 }
 
 package() {
