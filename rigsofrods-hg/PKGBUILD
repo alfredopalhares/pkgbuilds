@@ -1,0 +1,80 @@
+# Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
+
+pkgname=rigsofrods-hg
+pkgver=121
+pkgrel=2
+pkgdesc="An open source vehicle simulator based on soft-body physics"
+arch=('i686' 'x86_64')
+url="http://www.rigsofrods.com"
+license=('GPL')
+depends=('angelscript' 'caelum' 'mygui' 'socketw' 'ogre' 'openal' 'ogre-pagedgeometry' 'wxgtk2.9')
+#optdepends=('rigsofrods-content-pack: Official content pack')
+makedepends=('cmake' 'mercurial')
+conflicts=('rigsofrods')
+provides=('rigsofrods')
+backup=('opt/rigsofrods/plugins.cfg')
+source=('plugins.cfg'
+        'RoR.desktop'
+        'rorconfig.desktop'
+        'RoR.png')
+md5sums=('4a17e366ecfdb6f43ab448a45863a760'
+         'f26d4c5e8ecbb799095452c5d9034625'
+         'b4763676cfc156c854aeaa3481772291'
+         'b1b8a67e7402f1fbbcf14dbf03303415')
+
+_hgroot="http://hg.code.sf.net/p/rigsofrods"
+_hgrepo="codehg"
+
+# Angelscript is turned off for the moment due to compilation issues.
+
+build() {
+  cd "$srcdir"
+  msg "Connecting to Mercurial server...."
+
+  if [[ -d "$_hgrepo" ]]; then
+    cd "$_hgrepo"
+    hg pull -u
+    msg "The local files are updated."
+  else
+    hg clone "$_hgroot" "$_hgrepo"
+  fi
+
+  msg "Mercurial checkout done or server timeout"
+  msg "Starting build..."
+
+  rm -rf "$srcdir/$_hgrepo-build"
+  cp -r "$srcdir/$_hgrepo" "$srcdir/$_hgrepo-build"
+  cd "$srcdir/$_hgrepo-build"
+
+ LDFLAGS="-lboost_system" cmake . \
+  -DROR_BUILD_CONFIGURATOR=TRUE \
+  -DROR_BUILD_CONVERTER=TRUE \
+  -DROR_BUILD_SIM=TRUE \
+  -DROR_BUILD_TOOLS=TRUE \
+  -DROR_USE_MYGUI=TRUE \
+  -DROR_USE_OPENAL=TRUE \
+  -DROR_USE_SOCKETW=TRUE \
+  -DROR_USE_PAGED=TRUE \
+  -DROR_USE_CAELUM=TRUE \
+  -DROR_USE_ANGELSCRIPT=FALSE \
+  -DANGELSCRIPT_INCLUDE_DIRS=""\
+  -DROR_USE_CURL=TRUE \
+  -DwxWidgets_wxrc_EXECUTABLE=/usr/bin/wxrc-2.9 \
+  -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-2.9 \
+  -DSOCKETW_INCLUDE_DIRS=/usr/include \
+  -DSOCKETW_LIBRARIES=/usr/lib/libSocketW.so \
+  -DCMAKE_PREFIX_PATH=/opt/rigsofrods
+ #sed -i "s/.getValue/.toValue/" "$srcdir/$_hgrepo-build/source/main/gui"/*.cpp
+ make -j3
+}
+
+package() {
+  cd "$srcdir/$_hgrepo-build"
+  mkdir -p $pkgdir/opt/rigsofrods
+ cp -dpr --no-preserve=ownership bin "$pkgdir/opt/rigsofrods"
+
+ install -Dm 644 "$srcdir/plugins.cfg" "$pkgdir/opt/rigsofrods/bin/plugins.cfg"
+ install -Dm 644 "$srcdir/RoR.png" "$pkgdir/usr/share/pixmaps/RoR.png"
+ install -Dm 644 "$srcdir/RoR.desktop" "$pkgdir/usr/share/applications/RoR.desktop"
+ install -Dm 644 "$srcdir/rorconfig.desktop" "$pkgdir/usr/share/applications/rorconfig.desktop"
+}
