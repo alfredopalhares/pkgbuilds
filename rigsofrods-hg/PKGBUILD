@@ -72,6 +72,16 @@ package() {
  mkdir -p $pkgdir/opt/rigsofrods
  cp -dpr --no-preserve=ownership bin "$pkgdir/opt/rigsofrods"
 
+ # Somtimes RoR does not like directories
+ for dir in "$pkgdir/opt/rigsofrods/bin/resources/"*; do
+   if [[ -d $dir ]]; then
+     cd "$dir"
+     zip "$dir.zip" *
+     cd ..
+     rm -r $dir
+   fi
+ done
+
  install -Dm 644 "$srcdir/plugins.cfg" "$pkgdir/opt/rigsofrods/bin/plugins.cfg"
  install -Dm 644 "$srcdir/RoR.png" "$pkgdir/usr/share/pixmaps/RoR.png"
  install -Dm 644 "$srcdir/RoR.desktop" "$pkgdir/usr/share/applications/RoR.desktop"
