@@ -8,8 +8,7 @@ arch=('i686' 'x86_64')
 url="http://www.rigsofrods.com"
 license=('GPL')
 depends=('angelscript' 'caelum' 'mygui' 'socketw' 'ogre' 'openal' 'ogre-pagedgeometry' 'wxgtk2.9')
-#optdepends=('rigsofrods-content-pack: Official content pack')
-makedepends=('cmake' 'mercurial')
+makedepends=('cmake' 'mercurial' 'unzip')
 conflicts=('rigsofrods')
 provides=('rigsofrods')
 backup=('opt/rigsofrods/plugins.cfg')
@@ -77,7 +76,11 @@ package() {
  install -Dm 644 "$srcdir/RoR.png" "$pkgdir/usr/share/pixmaps/RoR.png"
  install -Dm 644 "$srcdir/RoR.desktop" "$pkgdir/usr/share/applications/RoR.desktop"
  install -Dm 644 "$srcdir/rorconfig.desktop" "$pkgdir/usr/share/applications/rorconfig.desktop"
+
  install -Dm 644 "$srcdir/content-pack-0.37.zip" "$pkgdir/opt/rigsofrods/misc/content-pack-0.37.zip"
+ unzip "$srcdir/content-pack-0.37.zip" -d "$pkgdir/content-pack"
+ mkdir -p "$pkgdir/opt/rigsofrods/bin/packs"
+ mv "$pkgdir/content-pack/streams/"*  -t "$pkgdir/opt/rigsofrods/bin/packs"
 
  mkdir -p "$pkgdir/usr/bin"
  ln -s "$pkgdir/opt/rigsofrods/RoRConfig" "$pkgdir/usr/bin/RoRConfig"
