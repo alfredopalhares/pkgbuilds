@@ -92,9 +92,9 @@ package() {
  install -Dm 644 "$srcdir/RoR.desktop" "$pkgdir/usr/share/applications/RoR.desktop"
  install -Dm 644 "$srcdir/rorconfig.desktop" "$pkgdir/usr/share/applications/rorconfig.desktop"
 
- unzip "$srcdir/content-pack-0.37.zip" -d "$pkgdir/content-pack"
  mkdir -p "$pkgdir/opt/rigsofrods/bin/packs"
- mv "$pkgdir/content-pack/streams/"*  -t "$pkgdir/opt/rigsofrods/bin/packs"
+ install -Dm 644 "$srcdir/pack_contentpack037.zip" "$pkgdir/opt/rigsofrods/bin/packs/pack_contentpack037.zip"
+ install -Dm 644 "$srcdir/pack_highquality.zip" "$pkgdir/opt/rigsofrods/bin/packs/pack_highquality.zip"
 
  mkdir -p "$pkgdir/usr/bin"
  ln -s "/opt/rigsofrods/bin/RoRConfig" "$pkgdir/usr/bin/RoRConfig"
