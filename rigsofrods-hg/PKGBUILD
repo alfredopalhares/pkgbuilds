@@ -87,7 +87,6 @@ package() {
  install -Dm 644 "$srcdir/RoR.desktop" "$pkgdir/usr/share/applications/RoR.desktop"
  install -Dm 644 "$srcdir/rorconfig.desktop" "$pkgdir/usr/share/applications/rorconfig.desktop"
 
- install -Dm 644 "$srcdir/content-pack-0.37.zip" "$pkgdir/opt/rigsofrods/misc/content-pack-0.37.zip"
  unzip "$srcdir/content-pack-0.37.zip" -d "$pkgdir/content-pack"
  mkdir -p "$pkgdir/opt/rigsofrods/bin/packs"
  mv "$pkgdir/content-pack/streams/"*  -t "$pkgdir/opt/rigsofrods/bin/packs"
