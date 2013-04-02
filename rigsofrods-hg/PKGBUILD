@@ -2,7 +2,7 @@
 
 pkgname=rigsofrods-hg
 pkgver=121
-pkgrel=4
+pkgrel=5
 pkgdesc="An open source vehicle simulator based on soft-body physics"
 arch=('i686' 'x86_64')
 url="http://www.rigsofrods.com"
