@@ -83,6 +83,6 @@ package() {
  mv "$pkgdir/content-pack/streams/"*  -t "$pkgdir/opt/rigsofrods/bin/packs"
 
  mkdir -p "$pkgdir/usr/bin"
- ln -s "$pkgdir/opt/rigsofrods/RoRConfig" "$pkgdir/usr/bin/RoRConfig"
- ln -s "$pkgdir/opt/rigsofrods/RoR" "$pkgdir/usr/bin/RoR"
+ ln -s "/opt/rigsofrods/bin/RoRConfig" "$pkgdir/usr/bin/RoRConfig"
+ ln -s "/opt/rigsofrods/bin/RoR" "$pkgdir/usr/bin/RoR"
 }
