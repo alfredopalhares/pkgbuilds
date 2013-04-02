@@ -12,12 +12,15 @@ makedepends=('cmake' 'mercurial' 'unzip' 'angelscript-2.22.1')
 conflicts=('rigsofrods')
 provides=('rigsofrods')
 backup=('opt/rigsofrods/bin/plugins.cfg')
+install="rigsofrods-hg.install"
 source=('plugins.cfg'
         'RoR.desktop'
         'RoRConfig.desktop'
         'RoR.png'
-        "content-pack-0.37.zip::http://sourceforge.net/projects/rigsofrods/files/rigsofrods/0.37/content-pack-0.37.zip/download"
-        )
+        "http://www.rigsofrods.com/repository/downloadCDN/pack_contentpack037.zip"
+        "http://www.rigsofrods.com/repository/downloadCDN/pack_highquality.zip"
+        "rigsofrods-hg.install")
+
 md5sums=('4a17e366ecfdb6f43ab448a45863a760'
          '4cc4c5aba1b43ca26f6d8cca69c97f79'
          '5d65c9f74961e44dae17043593aead3b'
