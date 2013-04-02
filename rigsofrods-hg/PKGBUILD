@@ -20,12 +20,13 @@ source=('plugins.cfg'
         "http://www.rigsofrods.com/repository/downloadCDN/pack_contentpack037.zip"
         "http://www.rigsofrods.com/repository/downloadCDN/pack_highquality.zip"
         "rigsofrods-hg.install")
-
 md5sums=('4a17e366ecfdb6f43ab448a45863a760'
          '4cc4c5aba1b43ca26f6d8cca69c97f79'
          '5d65c9f74961e44dae17043593aead3b'
          'b1b8a67e7402f1fbbcf14dbf03303415'
-         '261eb00d93559421f568b578bb95b697')
+         'e19909082de4355fd5c93b83d4d67a9b'
+         'e11f80d497abb1e5c11a71deebaeb78b'
+         'b36f650b3bd7763bd11eb9aaed44945a')
 
 
 _hgroot="http://hg.code.sf.net/p/rigsofrods"
