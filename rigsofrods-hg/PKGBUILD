@@ -7,11 +7,11 @@ pkgdesc="An open source vehicle simulator based on soft-body physics"
 arch=('i686' 'x86_64')
 url="http://www.rigsofrods.com"
 license=('GPL')
-depends=('angelscript' 'caelum' 'mygui' 'socketw' 'ogre' 'openal' 'ogre-pagedgeometry' 'wxgtk2.9')
-makedepends=('cmake' 'mercurial' 'unzip')
+depends=('angelscript-2.22.1' 'caelum' 'mygui' 'socketw' 'ogre' 'openal' 'ogre-pagedgeometry' 'wxgtk2.9')
+makedepends=('cmake' 'mercurial' 'unzip' 'angelscript-2.22.1')
 conflicts=('rigsofrods')
 provides=('rigsofrods')
-backup=('opt/rigsofrods/plugins.cfg')
+backup=('opt/rigsofrods/bin/plugins.cfg')
 source=('plugins.cfg'
         'RoR.desktop'
         'rorconfig.desktop'
@@ -54,8 +54,8 @@ build() {
   -DROR_USE_SOCKETW=TRUE \
   -DROR_USE_PAGED=TRUE \
   -DROR_USE_CAELUM=TRUE \
-  -DROR_USE_ANGELSCRIPT=FALSE \
-  -DANGELSCRIPT_INCLUDE_DIRS="" \
+  -DROR_USE_ANGELSCRIPT=TRUE \
+  -DANGELSCRIPT_INCLUDE_DIRS=/usr/include \
   -DANGELSCRIPT_LIBRARIES=/usr/lib/libangelscript.so \
   -DROR_USE_CURL=TRUE \
   -DwxWidgets_wxrc_EXECUTABLE=/usr/bin/wxrc-2.9 \
