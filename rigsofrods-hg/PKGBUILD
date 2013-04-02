@@ -20,6 +20,8 @@ source=('plugins.cfg'
         "http://www.rigsofrods.com/repository/downloadCDN/pack_contentpack037.zip"
         "http://www.rigsofrods.com/repository/downloadCDN/pack_highquality.zip"
         "rigsofrods-hg.install")
+noextract=("pack_contentpack037.zip"
+           "pack_highquality.zip")
 md5sums=('4a17e366ecfdb6f43ab448a45863a760'
          '4cc4c5aba1b43ca26f6d8cca69c97f79'
          '5d65c9f74961e44dae17043593aead3b'
@@ -90,7 +92,7 @@ package() {
  install -Dm 644 "$srcdir/plugins.cfg" "$pkgdir/opt/rigsofrods/bin/plugins.cfg"
  install -Dm 644 "$srcdir/RoR.png" "$pkgdir/usr/share/pixmaps/RoR.png"
  install -Dm 644 "$srcdir/RoR.desktop" "$pkgdir/usr/share/applications/RoR.desktop"
- install -Dm 644 "$srcdir/rorconfig.desktop" "$pkgdir/usr/share/applications/rorconfig.desktop"
+ install -Dm 644 "$srcdir/RoRConfig.desktop" "$pkgdir/usr/share/applications/RoRConfig.desktop"
 
  mkdir -p "$pkgdir/opt/rigsofrods/bin/packs"
  install -Dm 644 "$srcdir/pack_contentpack037.zip" "$pkgdir/opt/rigsofrods/bin/packs/pack_contentpack037.zip"
