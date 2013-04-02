@@ -14,15 +14,16 @@ provides=('rigsofrods')
 backup=('opt/rigsofrods/bin/plugins.cfg')
 source=('plugins.cfg'
         'RoR.desktop'
-        'rorconfig.desktop'
+        'RoRConfig.desktop'
         'RoR.png'
         "content-pack-0.37.zip::http://sourceforge.net/projects/rigsofrods/files/rigsofrods/0.37/content-pack-0.37.zip/download"
         )
 md5sums=('4a17e366ecfdb6f43ab448a45863a760'
-         'f26d4c5e8ecbb799095452c5d9034625'
-         'b4763676cfc156c854aeaa3481772291'
+         '4cc4c5aba1b43ca26f6d8cca69c97f79'
+         '5d65c9f74961e44dae17043593aead3b'
          'b1b8a67e7402f1fbbcf14dbf03303415'
          '261eb00d93559421f568b578bb95b697')
+
 
 _hgroot="http://hg.code.sf.net/p/rigsofrods"
 _hgrepo="codehg"
