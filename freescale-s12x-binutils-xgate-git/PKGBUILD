@@ -41,9 +41,10 @@ build() {
   #
   # BUILD HERE
   #
-  ./configure --prefix=/usr --target=xgate \
+  ./configure --target=xgate \
               --enable-targets=m68hc11,m68hc12,xgate \
-              --with-lib-path=/usr/lib --enable-ld=default \
+              --prefix=/usr --with-lib-prefix=xgate\
+              --with-lib-path=/usr/lib/xgate --enable-ld=default \
               --enable-plugins --enable-shared \
               --program-prefix=xgate- \
               --disable-werror --enable-multilib
