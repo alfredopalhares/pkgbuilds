@@ -1,6 +1,6 @@
 # Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
 pkgname=freescale-s12x-binutils-xgate-git
-pkgver=20130327
+pkgver=20130410
 pkgrel=1
 pkgdesc="Binary utilities for the S12X and XGATE processors by Freescale - Patched by Sean Keys"
 arch=("i686" "x86_64")
@@ -66,6 +66,9 @@ package() {
   cd "$srcdir/$_gitname-build"
 
   make prefix="$pkgdir/usr" tooldir="$pkgdir/usr" install
+
+  # Remove stuff to not collide with existent binutils
+  rm "$pkgdir/usr/bin/"{ar,as,nm,objcopy,objdump,ranlib,strip}
 }
 
 # vim:set ts=2 sw=2 et:
