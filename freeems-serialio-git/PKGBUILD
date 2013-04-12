@@ -10,8 +10,6 @@ url="https://github.com/seank/FreeEMS-SerialIO"
 license=('GPL')
 depends=("qt4>=4.7.0" "qconf")
 makedepends=('git')
-provides=("emstudio")
-conflicts=("emstudio-git")
 
 _gitroot=git://github.com/seank/FreeEMS-SerialIO.git
 _gitname=FreeEMS-SerialIO.git
