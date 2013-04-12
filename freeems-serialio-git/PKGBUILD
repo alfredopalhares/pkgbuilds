@@ -1,0 +1,49 @@
+# See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
+
+# Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
+pkgname=freeems-serialio-git
+pkgver=20130410
+pkgrel=1
+pkgdesc="Serial IO taylored for FreeEMS"
+arch=("i686" "x86_64")
+url="https://github.com/seank/FreeEMS-SerialIO"
+license=('GPL')
+depends=("qt4>=4.7.0" "qconf")
+makedepends=('git')
+provides=("emstudio")
+conflicts=("emstudio-git")
+
+_gitroot=git://github.com/seank/FreeEMS-SerialIO.git
+_gitname=FreeEMS-SerialIO.git
+
+build() {
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
+
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+    msg "The local files are updated."
+  else
+    git clone "$_gitroot" "$_gitname"
+  fi
+
+  msg "GIT checkout done or server timeout"
+  msg "Starting build..."
+
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
+
+  #
+  # BUILD HERE
+  #
+  qmake-qt4 PREFIX="/usr"
+  make
+}
+
+package() {
+  cd "$srcdir/$_gitname-build"
+  make INSTALL_ROOT="$pkgdir/" install
+}
+
+# vim:set ts=2 sw=2 et:
