@@ -43,8 +43,8 @@ build() {
   #
   ./configure --target=xgate \
               --enable-targets=m68hc11,m68hc12,xgate \
-              --prefix=/usr --with-lib-prefix=xgate\
-              --with-lib-path=/usr/lib/xgate --enable-ld=default \
+              --prefix=/opt/freeems-toolset/xgate-binutils  --with-lib-prefix=xgate\
+              --with-lib-path=/opt/freeems-toolset/xgate-binutils/lib  --enable-ld=default \
               --enable-plugins --enable-shared \
               --program-prefix=xgate- \
               --disable-werror --enable-multilib
@@ -52,7 +52,7 @@ build() {
   # Check host
   make configure-host
 
-  make tooldir="/usr"
+  make tooldir="/opt/freeems-toolset/xgate-binutils"
 }
 
 check() {
@@ -66,7 +66,7 @@ check() {
 package() {
   cd "$srcdir/$_gitname-build"
 
-  make prefix="$pkgdir/usr" tooldir="$pkgdir/usr" install
+  make prefix="$pkgdir/opt/freeems-toolset/xgate-binutils" tooldir="$pkgdir/opt/freeems-toolset/xgate-binutils" install
 
   # Remove stuff to not collide with existent binutils
   rm "$pkgdir/usr/bin/"{ar,as,nm,objcopy,objdump,ranlib,strip}
