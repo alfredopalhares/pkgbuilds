@@ -1,6 +1,6 @@
 # Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
 pkgname=freescale-s12x-binutils-xgate-git
-pkgver=20130410
+pkgver=90e7d84
 pkgrel=1
 pkgdesc="Binary utilities for the S12X and XGATE processors by Freescale - Patched by Sean Keys"
 arch=("i686" "x86_64")
@@ -41,6 +41,10 @@ build() {
   #
   # BUILD HERE
   #
+
+  # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
+  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+
   ./configure --target=xgate \
               --enable-targets=m68hc11,m68hc12,xgate \
               --prefix=/opt/freeems-toolset/xgate-binutils  --with-lib-prefix=xgate\
@@ -67,9 +71,6 @@ package() {
   cd "$srcdir/$_gitname-build"
 
   make prefix="$pkgdir/opt/freeems-toolset/xgate-binutils" tooldir="$pkgdir/opt/freeems-toolset/xgate-binutils" install
-
-  # Remove stuff to not collide with existent binutils
-  rm "$pkgdir/usr/bin/"{ar,as,nm,objcopy,objdump,ranlib,strip}
 }
 
 # vim:set ts=2 sw=2 et:
