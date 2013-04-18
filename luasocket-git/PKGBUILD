@@ -1,6 +1,9 @@
 # Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
 # Contributor: Shizeeg Unadequatov <shizeeque@gmail.com>
 
+# Please submit your patches to:
+# https://github.com/masterkorp/pkgbuilds
+
 pkgname=luasocket-git
 _gitname=luasocket
 pkgver=20130417
