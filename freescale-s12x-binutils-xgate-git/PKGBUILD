@@ -71,6 +71,11 @@ package() {
   cd "$srcdir/$_gitname-build"
 
   make prefix="$pkgdir/opt/freeems-toolset/xgate-binutils" tooldir="$pkgdir/opt/freeems-toolset/xgate-binutils" install
+
+  mkdir -p "$pkgdir/usr/bin"
+  for link in addr2line, ar, as, c++flitm elfedit, gprof, ld, ld.bfd, nm, objcopy, objdump, ranlib, readelf, size, strings, strip; do
+    ln -s "/opt/freeems-toolset/xgate-binutils/bin/xgate-$link" "$pkgdir/usr/bin/xgate-$link"
+  done
 }
 
 # vim:set ts=2 sw=2 et:
