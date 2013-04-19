@@ -42,7 +42,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname"
 
   # unset LDFLAGS as testsuite makes assumptions about which ones are active
   # do not abort on errors - manually check log files
@@ -50,7 +50,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname"
 
   make prefix="$pkgdir/opt/freeems-toolset/xgate-binutils" tooldir="$pkgdir/opt/freeems-toolset/xgate-binutils" install
 
