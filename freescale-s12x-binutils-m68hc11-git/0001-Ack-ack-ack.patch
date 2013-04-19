@@ -1,0 +1,63 @@
+From 481153bb31bc309bd6e7c9ec38cec836e5aabdb5 Mon Sep 17 00:00:00 2001
+From: Alfredo Palhares <masterkorp@masterkorp.net>
+Date: Fri, 19 Apr 2013 04:35:40 +0100
+Subject: [PATCH] Ack ack ack. Force CPPFLAGS to use -02 flags. Ported from
+ core/binutils. Its was generated with the command: sed -i
+ "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+
+---
+ libiberty/configure | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/libiberty/configure b/libiberty/configure
+index 17bd3c5..12fd11f 100755
+--- a/libiberty/configure
++++ b/libiberty/configure
+@@ -2287,7 +2287,7 @@ fi
+ ## -------------------- ##
+ 
+ ac_ext=c
+-ac_cpp='$CPP $CPPFLAGS'
++ac_cpp='$CPP $CPPFLAGS -O2'
+ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+@@ -2786,7 +2786,7 @@ fi
+ 
+ 
+ ac_ext=c
+-ac_cpp='$CPP $CPPFLAGS'
++ac_cpp='$CPP $CPPFLAGS -O2'
+ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+@@ -3574,7 +3574,7 @@ if test "x$ac_cv_prog_cc_c89" != xno; then :
+ fi
+ 
+ ac_ext=c
+-ac_cpp='$CPP $CPPFLAGS'
++ac_cpp='$CPP $CPPFLAGS -O2'
+ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+@@ -3779,7 +3779,7 @@ rm -rf conftest*
+ fi
+ 
+ ac_ext=c
+-ac_cpp='$CPP $CPPFLAGS'
++ac_cpp='$CPP $CPPFLAGS -O2'
+ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+@@ -3910,7 +3910,7 @@ See \`config.log' for more details." "$LINENO" 5; }
+ fi
+ 
+ ac_ext=c
+-ac_cpp='$CPP $CPPFLAGS'
++ac_cpp='$CPP $CPPFLAGS -O2'
+ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+-- 
+1.8.2.1
+

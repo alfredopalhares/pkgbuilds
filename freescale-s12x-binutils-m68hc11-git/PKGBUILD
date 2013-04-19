@@ -1,0 +1,63 @@
+# Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
+
+pkgname=freescale-s12x-binutils-m68hc11-git
+_gitname=FreeScale-s12x-binutils
+pkgver=90e7d84
+pkgrel=1
+pkgdesc="Binary utilities for the S12X and XGATE processors by Freescale - Patched by Sean Keys"
+arch=("i686" "x86_64")
+url="https://github.com/seank/FreeScale-s12x-binutils"
+license=('GPL')
+depends=('glibc' 'zlib')
+makedepends=('git')
+options=('!libtool' '!distcc' '!ccache')
+source=("$_gitname::git://github.com/seank/FreeScale-s12x-binutils.git"
+        "0001-Ack-ack-ack.patch")
+md5sums=('SKIP'
+        'c7ce2d09607ae955829cd595e179a9ac')
+
+
+pkgver() {
+  cd "$srcdir/$_gitname"
+  git describe --always | sed 's/-/./g'
+}
+
+build() {
+  cd "$srcdir/$_gitname"
+
+  git apply "$srcdir/0001-Ack-ack-ack.patch"
+
+  ./configure --target=m68hc11 \
+              --enable-targets=m68hc11,m68hc12,xgate \
+              --prefix=/opt/freeems-toolset/m68hc11-binutils  --with-lib-prefix=m68hc11\
+              --with-lib-path=/opt/freeems-toolset/m68hc11-binutils/lib  --enable-ld=default \
+              --enable-plugins --enable-shared \
+              --program-prefix=m68hc11- \
+              --disable-werror --enable-multilib
+
+  # Check host
+  make configure-host
+
+  make tooldir="/opt/freeems-toolset/m68hc11-binutils"
+}
+
+check() {
+  cd "$srcdir/$_gitname"
+
+  # unset LDFLAGS as testsuite makes assumptions about which ones are active
+  # do not abort on errors - manually check log files
+  make LDFLAGS="" -k check
+}
+
+package() {
+  cd "$srcdir/$_gitname"
+
+  make prefix="$pkgdir/opt/freeems-toolset/m68hc11-binutils" tooldir="$pkgdir/opt/freeems-toolset/m68hc11-binutils" install
+
+  mkdir -p "$pkgdir/usr/bin"
+  for link in addr2line ar as c++flitm elfedit gprof ld ld.bfd nm objcopy objdump ranlib readelf size strings strip; do
+    ln -s "/opt/freeems-toolset/m68hc11-binutils/bin/m68hc11-$link" "$pkgdir/usr/bin/m68hc11-$link"
+  done
+}
+
+# vim:set ts=2 sw=2 et:
