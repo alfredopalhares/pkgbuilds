@@ -1,5 +1,7 @@
 # Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
+
 pkgname=freescale-s12x-binutils-xgate-git
+_gitname=FreeScale-s12x-binutils
 pkgver=90e7d84
 pkgrel=1
 pkgdesc="Binary utilities for the S12X and XGATE processors by Freescale - Patched by Sean Keys"
@@ -10,10 +12,11 @@ groups=("freescale-s12x-toolchain-xgate")
 depends=('glibc' 'zlib')
 makedepends=('git')
 options=('!libtool' '!distcc' '!ccache')
-install=
+source=("$_gitname::git://github.com/seank/FreeScale-s12x-binutils.git"
+        "0001-Ack-ack-ack.patch")
+md5sums=('SKIP'
+        'c7ce2d09607ae955829cd595e179a9ac')
 
-_gitroot=git://github.com/seank/FreeScale-s12x-binutils.git
-_gitname=FreeScale-s12x-binutils
 
 pkgver() {
   cd "$srcdir/$_gitname"
@@ -21,29 +24,9 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+  cd "$srcdir/$_gitname"
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone  "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
-
-  # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+  git apply "$srcdir/0001-Ack-ack-ack.patch"
 
   ./configure --target=xgate \
               --enable-targets=m68hc11,m68hc12,xgate \
