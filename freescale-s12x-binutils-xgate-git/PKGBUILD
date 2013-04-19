@@ -8,7 +8,6 @@ pkgdesc="Binary utilities for the S12X and XGATE processors by Freescale - Patch
 arch=("i686" "x86_64")
 url="https://github.com/seank/FreeScale-s12x-binutils"
 license=('GPL')
-groups=("freescale-s12x-toolchain-xgate")
 depends=('glibc' 'zlib')
 makedepends=('git')
 options=('!libtool' '!distcc' '!ccache')
