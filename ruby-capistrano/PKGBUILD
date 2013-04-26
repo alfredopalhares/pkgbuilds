@@ -1,4 +1,6 @@
 # Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
+# Please submit any pacthes to:
+# https://github.com/masterkorp/pkgbuilds
 
 _gemname=capistrano
 pkgname=ruby-$_gemname
