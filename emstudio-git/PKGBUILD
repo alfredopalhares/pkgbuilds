@@ -2,7 +2,8 @@
 
 # Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
 pkgname=emstudio-git
-pkgver=20130410
+_gitname=emstudio
+pkgver=475.6f23c52
 pkgrel=1
 pkgdesc="Cross Platform FreeEMS tuning application, written in c++ with Qt"
 arch=("i686" "x86_64")
@@ -13,40 +14,24 @@ depends=("qt4>=4.7.0" "qconf" "qwt" "qjson" "icu")
 makedepends=('git')
 provides=("emstudio")
 conflicts=("emstudio-git")
-source=()
-noextract=()
-md5sums=() #generate with 'makepkg -g'
+source=("$_gitname::git+git://github.com/malcom2073/emstudio.git")
+md5sums=('SKIP')
 
-_gitroot=git://github.com/malcom2073/emstudio.git
-_gitname=emstudio
+pkgver() {
+  cd "$_gitname"
+  echo $(git rev-list --count master).$(git rev-parse --short master)
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+  cd "$_gitname"
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
   qmake-qt4
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$_gitname"
+
   make INSTALL_ROOT="$pkgdir/" install
   mkdir -p "$pkgdir/etc/emstudio"
   install -Dm644 "core/freeems.config.json" "$pkgdir/etc/emstudio"
