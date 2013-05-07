@@ -1,10 +1,11 @@
 # Get help on the forums
 # http://forum.diyefi.org/viewtopic.php?f=41&t=2124
+# See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
 
 # Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
 pkgname=freeems-loader-git
 _gitname=freeems-loader
-pkgver=313.1a88a52
+>>>>>>> freeems-loader-git: Patch SerialIO hardcoded Path
 pkgrel=1
 pkgdesc="GUI based s19 loader for use with s12x targets with special features for freeems"
 arch=("i686" "x86_64")
