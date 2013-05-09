@@ -5,7 +5,6 @@
 # Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
 pkgname=freeems-loader-git
 _gitname=freeems-loader
->>>>>>> freeems-loader-git: Patch SerialIO hardcoded Path
 pkgrel=1
 pkgdesc="GUI based s19 loader for use with s12x targets with special features for freeems"
 arch=("i686" "x86_64")
@@ -16,7 +15,7 @@ makedepends=("git" "qconf")
 source=("freeems-loader::git+git://github.com/seank/freeems-loader.git"
         "0001-Do-not-treat-alerts-as-errors.patch")
 md5sums=('SKIP'
-         '053a1680fbca43b4a5fd8915ce188e45')
+          '69bc2affc19e2bd7f80c8eafdc81a970')
 
 pkgver() {
   cd "$_gitname"
