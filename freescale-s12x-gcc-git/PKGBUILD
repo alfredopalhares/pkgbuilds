@@ -1,0 +1,74 @@
+# Maintainer: Alfredo PalhARES <MASterkorp@masterkorp.net>
+
+pkgname=freescale-s12x-gcc-git
+_gitname=FreeScale-s12x-gcc
+pkgver=79feecf
+pkgrel=1
+pkgdesc="GCC update to better support the s12x core  - Patched by Sean Keys"
+arch=("i686" "x86_64")
+url="https://github.com/seank/FreeScale-s12x-gcc"
+license=('GPL')
+depends=('glibc' 'zlib')
+makedepends=('git' "freescale-s12x-binutils-m68hc11-git" "libmpc" "cloog")
+options=('!libtool' '!distcc' '!ccache')
+source=("$_gitname::git://github.com/seank/FreeScale-s12x-gcc")
+md5sums=('SKIP')
+
+
+pkgver() {
+  cd "$srcdir/$_gitname"
+  git describe --always | sed 's/-/./g'
+}
+
+build() {
+  cd "$srcdir/$_gitname/src"
+
+  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
+  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+
+  # using -pipe causes spurious test-suite failures
+  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
+  CFLAGS=${CFLAGS/-pipe/}
+  CXXFLAGS=${CXXFLAGS/-pipe/}
+  unset CPPFLAGS
+
+  ./configure --program-prefix=m68hc11- \
+              --enable-languages=c \
+              --target=m68hc11 \
+              --with-gnu-as \
+              --with-gnu-ld \
+              --disable-nls \
+              --disable-shared \
+              --disable-threads \
+              --disable-libssp \
+              --disable-libstdcxx-pch \
+              --disable-libmudflap \
+              --disable-libgomp \
+              --with-system-zlib \
+              --without-included-gettext \
+              --disable-checking \
+              --without-headers  \
+              --prefix=/opt/freeems-toolset/gcc
+  make
+}
+
+check() {
+  cd "$srcdir/$_gitname/src"
+
+  # do not abort on errors - manually check log files
+#  make  -k check || true
+#  ${_basedir}/contrib/test_summary
+}
+
+package() {
+  cd "$srcdir/$_gitname/src"
+
+  make -j1 DESTDIR=${pkgdir} install-gcc
+
+#  mkdir -p "$pkgdir/usr/bin"
+#  for link in addr2line ar as c++flitm elfedit gprof ld ld.bfd nm objcopy objdump ranlib readelf size strings strip; do
+#    ln -s "/opt/freeems-toolset/xgate-binutils/bin/xgate-$link" "$pkgdir/usr/bin/xgate-$link"
+#  done
+}
+
+# vim:set ts=2 sw=2 et:
