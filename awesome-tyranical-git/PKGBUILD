@@ -1,43 +1,29 @@
-# Maintainer: Your Name <youremail@domain.com>
-pkgname=awesome-tyranical-git
-pkgver=20130306
+# Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
+# Please submit your patched directly to:
+# https://github.com/masterkorp/pkgbuilds
+pkgname=awesome-tyrannical-git
+_gitname=tyrannical
+pkgver=46.83a69e0
 pkgrel=1
-pkgdesc="Dynamic tagging configuration system for awesomeWM"
+pkgdesc="Dynamic tagging configuration system for Awesome WM"
 arch=("any")
-url="https://github.com/Elv13/awesome-tyranical"
+url="https://github.com/Elv13/tyrannical"
 license=('GPL')
-groups=()
 depends=("awesome" "lua")
 makedepends=('git')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=()
-noextract=()
-md5sums=() #generate with 'makepkg -g'
+source=("$_gitname::git+git://github.com/Elv13/tyrannical.git")
+md5sums=("SKIP")
 
-_gitroot=git://github.com/Elv13/awesome-tyranical.git
-_gitname=awesome-tyranical
-
+pkgver() {
+  cd "$_gitname"
+  echo $(git rev-list --count master).$(git rev-parse --short master)
+}
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
+  cd "$_gitname"
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$_gitname"
   install -D -m644 init.lua $pkgdir/usr/share/awesome/lib/tyranical/init.lua
   install -D -m644 example.rc.lua $pkgdir/usr/share/doc/tyranical/example.rc.lua
   install -D -m644 README.md $pkgdir/usr/share/doc/tyranical/README.md
