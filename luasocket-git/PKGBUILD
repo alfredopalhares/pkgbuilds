@@ -6,7 +6,7 @@
 
 pkgname=luasocket-git
 _gitname=luasocket
-pkgver=20130909
+pkgver=529.6d5e40c
 pkgrel=1
 pkgdesc="Luasocket is the most comprehensive networking support library for the Lua language, with IPv6 support. This version compatible with Lua 5.1 and 5.2"
 arch=('i686' 'x86_64')
@@ -25,11 +25,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$_gitname"
-  # generate version from git commit count
-  # echo "$(git rev-list --count makepkg).$(git rev-parse --short makepkg)"
-
-  # also you can generate version from tip date
-  echo $(git log -1 --date=short | grep Date | sed 's|[^0-9]||g')
+  echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
