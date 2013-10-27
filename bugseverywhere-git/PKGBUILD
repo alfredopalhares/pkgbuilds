@@ -1,0 +1,37 @@
+# Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
+# Contributor: Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
+
+# Please submit your patches to:
+# https://github.com/masterkorp/pkgbuilds
+
+pkgname=bugseverywhere-git
+_gitname="be"
+pkgver=1668.dcbdaba
+pkgrel=1
+pkgdesc="A distributed bugtracker"
+arch=('any')
+url="http://bugseverywhere.org/"
+license=('GPL')
+depends=("python2" "python2-yaml" "python2-cherrypy" "python2-sphinx" "python2-numpydoc")
+makedepends=('git' 'ed')
+optdepends=('cherrypy: web interface')
+provides=('bugseverywhere')
+conflicts=('bugseverywhere' 'bugseverywhere-bzr')
+options=(!emptydirs)
+source=("$_gitname::git://gitorious.org/be/be")
+md5sums=('SKIP')
+
+
+pkgver() {
+  cd "$_gitname"
+  echo $(git rev-list --count master).$(git rev-parse --short master)
+}
+
+build() {
+  cd "$_gitname"
+
+
+  python2 setup.py install --root="$pkgdir"
+}
+
+# vim:set ts=2 sw=2 et:
