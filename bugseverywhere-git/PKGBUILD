@@ -14,7 +14,6 @@ url="http://bugseverywhere.org/"
 license=('GPL')
 depends=("python2" "python2-yaml" "python2-cherrypy" "python2-sphinx" "python2-numpydoc")
 makedepends=('git' 'ed')
-optdepends=('cherrypy: web interface')
 provides=('bugseverywhere')
 conflicts=('bugseverywhere' 'bugseverywhere-bzr')
 options=(!emptydirs)
