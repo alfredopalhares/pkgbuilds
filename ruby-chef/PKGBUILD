@@ -4,8 +4,8 @@
 
 _gemname=chef
 pkgname=ruby-$_gemname
-pkgver=11.6.2
-pkgrel=2
+pkgver=11.8.0
+pkgrel=1
 pkgdesc="A systems integration framework, built to bring the benefits of configuration management to your entire infrastructure."
 arch=(any)
 url="http://wiki.opscode.com/display/chef"
@@ -31,7 +31,7 @@ depends=('ruby'
 makedepends=(rubygems)
 source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-md5sums=('8db9eb4b3c75be30e8125ea4eedd3f01')
+md5sums=('522cb7dfcff513a575f6c68493030584')
 
 
 package() {
