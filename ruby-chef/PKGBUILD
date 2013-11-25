@@ -29,6 +29,7 @@ depends=('ruby'
   'ruby-yajl-ruby'
   'ruby-mime-types-1.16'
   'ruby-diff-lcs'
+  'ruby-chef-zero'
   )
 makedepends=(rubygems)
 source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
