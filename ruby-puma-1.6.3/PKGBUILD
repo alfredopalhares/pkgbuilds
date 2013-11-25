@@ -2,7 +2,7 @@
 # Contribuitor: Chris Fordham <chris at fordham-nagy dot id dot au> aka flaccid
 
 _gemname=puma
-pkgname="$_gemname"
+pkgname=ruby-$_gemname-1.6.3
 pkgver=1.6.3
 pkgrel=1
 pkgdesc="Puma is a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack applications."
