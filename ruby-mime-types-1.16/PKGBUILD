@@ -5,7 +5,7 @@
 
 pkgname=ruby-mime-types-1.16
 pkgver=1.16
-pkgrel=2
+pkgrel=3
 pkgdesc="MIME Content-Type database"
 arch=('any')
 url="http://mime-types.rubyforge.org"
@@ -25,7 +25,7 @@ package() {
   local _rubyver="$(ruby --version | sed 's/.* \(.*\..*\..*\)p.*/\1/')"
 
   # Since this package is just needed to keep ruby-chef happy
-  #  install -dm 755 "${pkgdir}"/usr/lib/ruby/{gems/${_rubyver},vendor_ruby}
+    install -dm 755 "${pkgdir}"/usr/lib/ruby/{gems/${_rubyver},vendor_ruby}
   #  mv lib "${pkgdir}"/usr/lib/ruby/vendor_ruby/${_rubyver}
 
 # Gem compatibility
