@@ -28,6 +28,7 @@ depends=('ruby'
   'ruby-uuidtools'
   'ruby-yajl-ruby'
   'ruby-mime-types-1.16'
+  'ruby-diff-lcs'
   )
 makedepends=(rubygems)
 source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
