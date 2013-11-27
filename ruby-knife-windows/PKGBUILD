@@ -8,7 +8,10 @@ pkgdesc="Plugin that adds functionality to Chef's Knife CLI for configuring/inte
 arch=('any')
 url="https://github.com/opscode/knife-windows"
 license=('MIT')
-depends=('ruby')
+depends=(
+  'ruby'
+  'ruby-em-winrm'
+)
 makedepends=('rubygems')
 source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
