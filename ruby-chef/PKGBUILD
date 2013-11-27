@@ -35,6 +35,7 @@ depends=('ruby'
   'ruby-coderay-1.0.5'
   'ruby-fog-1.15.0'
   'ruby-excon-0.25.0'
+  'ruby-knife-windows'
   )
 makedepends=(rubygems)
 source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
