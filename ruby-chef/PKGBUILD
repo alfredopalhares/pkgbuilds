@@ -34,6 +34,7 @@ depends=('ruby'
   'ruby-puma-1.6.3'
   'ruby-coderay-1.0.5'
   'ruby-fog-1.15.0'
+  'ruby-excon-0.25.0'
   )
 makedepends=(rubygems)
 source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
