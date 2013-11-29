@@ -1,0 +1,10 @@
+# Temp files
+*.swp
+
+# makepkg directory
+*/pkg/*
+*/src/*
+
+# Binary and source packages
+*.tar.xz
+*.tar.gz
