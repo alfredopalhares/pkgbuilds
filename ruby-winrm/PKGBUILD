@@ -8,7 +8,18 @@ pkgdesc="Ruby library for Windows Remote Management"
 arch=('any')
 url="http://github.com/WinRb/WinRM"
 license=('MIT')
-depends=('ruby' 'ruby-gssapi>=1.0.0' 'ruby-httpclient>=2.2' 'ruby-httpclient>=2.2.0.2' 'ruby-nokogiri>=1.5' 'ruby-rubyntlm>=0.1.1' 'ruby-uuidtools>=2.1.2' 'ruby-savon' 'ruby-logging>=1.6' 'ruby-logging>=1.6.1')
+depends=(
+  'ruby'
+  'ruby-gssapi-1.0.0'
+  'ruby-httpclient>=2.2'
+  'ruby-httpclient>=2.2.0.2'
+  'ruby-nokogiri>=1.5'
+  'ruby-rubyntlm>=0.1.1'
+  'ruby-uuidtools>=2.1.2'
+  'ruby-savon'
+  'ruby-logging>=1.6'
+  'ruby-logging>=1.6.1'
+)
 makedepends=('rubygems')
 source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
