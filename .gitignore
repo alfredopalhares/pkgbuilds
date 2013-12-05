@@ -8,3 +8,6 @@
 # Binary and source packages
 *.tar.xz
 *.tar.gz
+
+# Ignore gem files too
+*.gem
