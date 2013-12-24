@@ -2,13 +2,13 @@
 
 pkgname=ruby-docile
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Docile keeps your Ruby DSLs tame and well-behaved"
 arch=('any')
 url="http://ms-ati.github.com/docile/"
 license=("MIT")
 groups=()
-depends=('ruby' 'ruby-rake' 'ruby-rspec' 'ruby-yard' 'ruby-redcarpet' 'ruby-github-markup' 'ruby-coveralls')
+depends=('ruby')
 makedepends=('ruby')
 optdepends=()
 provides=()
