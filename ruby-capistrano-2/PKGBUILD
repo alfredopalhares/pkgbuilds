@@ -5,7 +5,7 @@
 _gemname=capistrano
 pkgname=ruby-$_gemname-2
 pkgver=2.15.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Capistrano - Welcome to easy deployment with Ruby over SSH - A version that does not brake your deploys to hell"
 arch=('any')
 url="http://github.com/capistrano/capistrano"
@@ -19,6 +19,7 @@ makedepends=('rubygems')
 source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
 md5sums=('fc4fc2ee06fb7b3b9608741e674eccd6')
+conflicts="ruby-capistrano"
 
 package() {
   cd "$srcdir"
