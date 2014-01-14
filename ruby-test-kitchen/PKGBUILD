@@ -12,7 +12,7 @@ depends=(
   'ruby'
   'ruby-mixlib-shellout'
   'ruby-net-scp'
-  'ruby-safe_yaml'
+  'ruby-safe_yaml-0'
   'ruby-thor'
 )
 makedepends=('rubygems')
