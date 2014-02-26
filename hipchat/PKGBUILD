@@ -1,6 +1,6 @@
-# Maintainer: Douglas Meyer <Douglas.Meyer@mail.com>
+# Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
+# Contributor: Douglas Meyer <Douglas.Meyer@mail.com>
 # Contributor: Tom Vincent <http://tlvince.com/contact>
-# Contributor: Alfredo Palhares <masterkorp@masterkorp.net>
 
 pkgname=hipchat
 pkgver=2.1.1013
