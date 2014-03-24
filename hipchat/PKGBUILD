@@ -2,6 +2,9 @@
 # Contributor: Douglas Meyer <Douglas.Meyer@mail.com>
 # Contributor: Tom Vincent <http://tlvince.com/contact>
 
+# Please submit any fixes to:
+# https://github.com/masterkorp/pkgbuilds
+
 pkgname=hipchat
 pkgver=2.1.1013
 pkgrel=2
