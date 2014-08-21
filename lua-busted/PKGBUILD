@@ -1,7 +1,7 @@
 # Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
 
 pkgname=lua-busted
-pkgver=1.10.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Elegant Lua unit testing"
 arch=(any)
@@ -18,7 +18,7 @@ depends=(
   "lua-penlight"
 )
 source=(https://github.com/Olivine-Labs/busted/archive/v$pkgver.tar.gz)
-md5sums=('8ed3b37b4b97c1bb704faad827381882')
+md5sums=('a4c7cebb251eabbc678129754e8cddc2')
 
 package() {
   cd "$srcdir/busted-$pkgver"
