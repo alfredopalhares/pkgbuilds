@@ -1,10 +1,11 @@
-# See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
+# Please submit your patch directly to:
+# https://github.com/masterkorp/pkgbuilds
 
 # Maintainer: Alfredo Palhares <masterkorp@masterkorp.net>
 pkgname=yats-git
 _gitname=yats
 pkgver=861.989e9a3
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet Another Tunning Software"
 arch=("i686" "x86_64")
 url="https://github.com/masterkorp/yats"
