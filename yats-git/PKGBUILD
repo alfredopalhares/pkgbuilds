@@ -4,10 +4,10 @@
 pkgname=yats-git
 _gitname=yats
 pkgver=861.989e9a3
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Tunning Software"
 arch=("i686" "x86_64")
-url="https://github.com/masterkorp/yats#"
+url="https://github.com/masterkorp/yats"
 license=('GPL')
 provides=("yats")
 conflicts=("emstudio" "emstudio-git")
